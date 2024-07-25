@@ -35,7 +35,7 @@ class StopWatch():
     def lap(self):
         """
         """
-        self.__lapTime = round((time.time()  - self.__lap), 2)
+        self.__lapTime = round((time.time() - self.__lap), 2)
         self.__lap = time.time()
         self.stop()
 
@@ -49,7 +49,7 @@ class StopWatch():
         msg04 = "You stopwatch data are in the file "
         msg05 = "Timer{:%Y%m%dT%H%M%S}.txt".format(datetime.now())
         msg06 = "~~~~~~~~~GOODBYE~~~~~~~~~"
-        file = open(msg05,"w")
+        file = open(msg05, "w")
         lines = []
         print(msg01)
         time.sleep(0.8)
@@ -58,21 +58,21 @@ class StopWatch():
             if (type(respStr) is not str) or\
                     (respStr.upper() not in ["S", "L", "E"]):
                 print("Wrong input.\n{}".format(msg02))
-            elif (respStr.upper() == "S" and self.__started == False):
+            elif (respStr.upper() == "S" and self.__started is False):
                 self.start()
                 lines.append("StopWatch\n")
                 respStr = input(msg03)
             elif (respStr.upper() == "E"):
                 lines.append("Goodbye \n")
                 res = True
-            elif (respStr.upper() == "S" and self.__started == True):
+            elif (respStr.upper() == "S" and self.__started is True):
                 self.stop()
                 a = "Total time : {}\n".format(self.__time)
                 print(a)
                 lines.append(a)
                 print(msg04 + msg05)
                 res = True
-            elif (respStr.upper() == "L" and self.__started == True):
+            elif (respStr.upper() == "L" and self.__started is True):
                 self.lap()
                 a = "Lap time : +{}    ,   {}\n".format(
                         self.__lapTime,
@@ -81,7 +81,7 @@ class StopWatch():
                 print(a)
                 lines.append(a)
                 respStr = input(msg03)
-            elif (self.__started == True):
+            elif (self.__started is True):
                 print("Wrong input.")
                 print(msg03)
                 res = True
